@@ -2,7 +2,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 SRCS = main.cpp Utils.cpp
-OBJS = $(SRC:.cpp=.o)
+OBJS = $(SRCS:.cpp=.o)
 NAME = rep
 
 all : $(NAME)

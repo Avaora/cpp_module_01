@@ -13,9 +13,9 @@ Utils::Utils(int argc, char *argv[])
 
 Utils::~Utils()
 {
-	if (ifile.is_open == true)
+	if (ifile.is_open() == true)
 		ifile.close();
-	if (ofile.is_open == true)
+	if (ofile.is_open() == true)
 		ofile.close();
 }
 int	Utils::argsValid()
@@ -40,7 +40,7 @@ int	Utils::argsValid()
 
 int	Utils::ifileOpen()
 {
-	ifile.open(ifilename.c_str(), ios_base::in);
+	ifile.open(ifilename.c_str(), std::ios_base::in);
 	if ((ifile.is_open() == false) || (ifile.fail() == true))
 	{
 		std::cout << "ERROR: file couldn't be opened for reading!\n";
@@ -51,7 +51,7 @@ int	Utils::ifileOpen()
 
 int	Utils::ofileOpen()
 {
-	ofile.open(ofilename.c_str(), ios_base::out);
+	ofile.open(ofilename.c_str(), std::ios_base::out);
 	if ((ofile.is_open() == false) || (ofile.fail() == true))
 	{
 		std::cout << "ERROR: file couldn't be opened for writing!\n";
@@ -70,14 +70,14 @@ int	Utils::readtoMem()
 		std::cout << "ERROR: read error!\n";
 		return (1);
 	}
-	ifile.seekg(0, ios_base::end);
+	ifile.seekg(0, std::ios_base::end);
 	len = ifile.tellg();
 	if (len == -1)
 	{
 		std::cout << "ERROR: read error!\n";
 		return (1);
 	}
-	ifile.seekg(0, ios_base::beg);
+	ifile.seekg(0, std::ios_base::beg);
 	buf = new char[len + 1];
 	ifile.read(buf, len);
 	rbyte = ifile.gcount();
@@ -104,6 +104,8 @@ int	Utils::changeStr()
 	size_t	pos = 0;
 	size_t	cur = 0;
 	size_t	len1 = s1.length();
+	size_t	len2 = s2.length();
+
 	if (bulk.empty() == true)
 	{
 		std::cout << "ERROR: read error!\n";
@@ -112,11 +114,11 @@ int	Utils::changeStr()
 	while (1)
 	{
 		cur = bulk.find(s1, pos);
-		if (cur == string::npos)
+		if (cur == std::string::npos)
 			break ;
-		bulk.erase(cur, len);
+		bulk.erase(cur, len1);
 		bulk.insert(cur, s2);
-		pos = cur + s1;
+		pos = cur + len2;
 	}
 	return (0);
 }

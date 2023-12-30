@@ -6,8 +6,8 @@ int	main()
 
 	dynamicZombie = newZombie("Dynamic");
 
-	randomChump("Static");
 	dynamicZombie->announce();
+	randomChump("Static");
 
 	delete dynamicZombie;
 	return (0);

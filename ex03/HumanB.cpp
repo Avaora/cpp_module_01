@@ -1,6 +1,6 @@
 #include "HumanB.hpp"
 
-HumanB::HumanB(std::string newname): weapon(NULL)
+HumanB::HumanB(std::string newname)
 {
 	name = newname;
 }

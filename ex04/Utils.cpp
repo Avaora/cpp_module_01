@@ -64,6 +64,7 @@ int	Utils::readtoMem()
 {
 	char	*buf;
 	int		len;
+	int		rbyte;
 	
 	if (ifile.eof() == true)
 	{
@@ -95,16 +96,14 @@ int	Utils::readtoMem()
 
 int	Utils::writetoFile()
 {
-	ofile.write(bulk.c_str(), rbyte);
+	ofile.write(bulk.c_str(), bulk.length());
 	return (0);
 }
 
 int	Utils::changeStr()
 {
-	size_t	pos = 0;
 	size_t	cur = 0;
 	size_t	len1 = s1.length();
-	size_t	len2 = s2.length();
 
 	if (bulk.empty() == true)
 	{
@@ -113,12 +112,11 @@ int	Utils::changeStr()
 	}
 	while (1)
 	{
-		cur = bulk.find(s1, pos);
+		cur = bulk.find(s1, cur);
 		if (cur == std::string::npos)
 			break ;
 		bulk.erase(cur, len1);
 		bulk.insert(cur, s2);
-		pos = cur + len2;
 	}
 	return (0);
 }

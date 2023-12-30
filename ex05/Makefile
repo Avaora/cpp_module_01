@@ -1,5 +1,5 @@
 CXX = c++
-CXXFLAGS = -Wall -Wextra -Werror
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic-errors
 RM = rm -f
 SRCS = main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)

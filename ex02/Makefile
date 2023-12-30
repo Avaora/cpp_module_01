@@ -2,7 +2,7 @@ CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
-NAME = doom
+NAME = ref
 
 all : $(NAME)
 $(NAME) : $(OBJS)

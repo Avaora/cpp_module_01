@@ -1,5 +1,6 @@
 #ifndef UTILS_HPP
 # define UTILS_HPP
+
 # include <iostream>
 # include <fstream>
 # include <string>
@@ -14,7 +15,6 @@ class	Utils
 		std::string		bulk;
 		std::ifstream	ifile;
 		std::ofstream	ofile;
-		int				rbyte;
 	public:
 		Utils(int argc, char *argv[]);
 		~Utils();
